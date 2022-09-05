@@ -1,0 +1,23 @@
+{
+  "name": "Kubartech BL gross margin",
+  "version": "0.03",
+  "description": "-",
+  "background": {
+    "service_worker": "background.js"
+},
+  "content_scripts": [
+    {
+      "matches": ["https://panel-d.baselinker.com/inventory_products.php"],
+      "js":["script.js"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": ["https://panel-d.baselinker.com/orders.php"],
+      "js":["script-orders.js"],
+      "run_at": "document_end"
+    }
+
+  ],
+  "host_permissions": ["<all_urls>"],
+  "manifest_version": 3
+}
