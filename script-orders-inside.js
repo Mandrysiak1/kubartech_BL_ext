@@ -4,13 +4,12 @@ function initProductPage() {
     initButton();
 }
 
-function initOrderPageButton()
-{
+function initOrderPageButton() {
     let btnHtml = '<button class="btn btn-primary btn-extension">Edytuj wtyczką</button>';
     let targetTop = document.querySelector('.mail-container-header').querySelector('.pull-right.text-sm')
     targetTop.insertAdjacentHTML('beforeend', btnHtml);
 
-    buttonTop = targetTop.getElementsByClassName('btn-extension')[0];                 
+    buttonTop = targetTop.getElementsByClassName('btn-extension')[0];
     buttonTop.addEventListener('click', () => {
         openWindowInNewTabInOrder();
     });

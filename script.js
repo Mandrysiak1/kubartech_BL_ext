@@ -3,7 +3,7 @@
   var lastProductPrices = []
   var purchasePrices = [];
   var margins = [];
-var productsData = [];
+  var productsData = [];
 
 
 const init = async function(){
@@ -15,7 +15,7 @@ const init = async function(){
 
 
   // Select the node that will be observed for mutations
-  const targetNode = document.getElementById('product_modal');
+  const targetNode = document.getElementById('edit_object_modal');
 
   // Options for the observer (which mutations to observe)
   const config = { attributes: true };
@@ -141,7 +141,7 @@ function sendMessagePromise() {
         index = 0
         productIds.forEach(el => {
           let price = Number.parseFloat(productPrices[index])
-          let purchase_price = (Number.parseFloat (response.data.products[el].text_fields.extra_field_5072))
+          let purchase_price = (Number.parseFloat(response.data.products[el].text_fields.extra_field_5072))
           let name = (response.data.products[el].text_fields.name);
           productsData.push({
             id: el,
@@ -278,9 +278,8 @@ const getSellingPriceValueModal = (container) => {
 
 const getPurchasePriceValue = () => {
   let purchasePriceInput = document.querySelector('.supplier_row .product_supplier_cost');
-
-  let productName = document.querySelector('.modal-dialog li.breadcrumb_name.active').innerHTML;
-  // let purchasePriceValue = purchasePrices.find(obj => obj.name === productName).purchasePrice;
+  let productNameContainer = document.querySelector('.modal-dialog li.breadcrumb_name.active');
+  let productName = productNameContainer["innerText" in productNameContainer ? "innerText" : "textContent"].replace(/ *\[[^)]*\] */g, "");
   let purchasePriceValue = productsData.find(obj => obj.name === productName).purchasePrice;
 
   return purchasePriceValue;
